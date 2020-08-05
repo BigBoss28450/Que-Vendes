@@ -12,7 +12,7 @@ export default function AppTextInput({ icon, ...otherProps }) {
           <MaterialCommunityIcons
             name={icon}
             size={20}
-            color={colors.lightGray}
+            color={colors.mediumGray}
             style={styles.icon}
           />
         </View>
