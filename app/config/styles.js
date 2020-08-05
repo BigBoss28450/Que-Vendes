@@ -1,4 +1,4 @@
-const { default: colors } = require("./colors");
+const colors = require("./colors");
 const { Platform } = require("react-native");
 
 export default {
