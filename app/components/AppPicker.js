@@ -18,8 +18,11 @@ import PickerItem from "./PickerItem";
 
 export default function AppPicker({
   icon,
+  width = "100%",
   items,
+  numberOfColumns = 1,
   onSelectItem,
+  PickerItemComponent = PickerItem,
   placeholder,
   selectedItem,
 }) {
@@ -28,7 +31,7 @@ export default function AppPicker({
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <View style={styles.iconContainer}>
               <MaterialCommunityIcons
@@ -39,9 +42,15 @@ export default function AppPicker({
               />
             </View>
           )}
-          <Text style={[defaultStyles.text, styles.text]}>
-            {selectedItem ? selectedItem.label : placeholder}
-          </Text>
+          {selectedItem ? (
+            <Text style={[defaultStyles.text, styles.text]}>
+              {selectedItem.label}
+            </Text>
+          ) : (
+            <Text style={[defaultStyles.text, styles.placeholder]}>
+              {placeholder}
+            </Text>
+          )}
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -56,8 +65,10 @@ export default function AppPicker({
         <FlatList
           data={items}
           keyExtractor={(item) => item.value.toString()}
+          numColumns={numberOfColumns}
           renderItem={({ item }) => (
-            <PickerItem
+            <PickerItemComponent
+              item={item}
               label={item.label}
               onPress={() => {
                 setModalVisible(false);
@@ -74,9 +85,8 @@ export default function AppPicker({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.lightLightGray,
-    borderRadius: 25,
+    borderRadius: 10,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
   },
@@ -89,6 +99,10 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   text: {
+    flex: 1,
+  },
+  placeholder: {
+    color: colors.mediumGray,
     flex: 1,
   },
   textInput: {

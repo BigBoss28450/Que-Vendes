@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Switch } from "react-native";
-import Screen from "./app/components/Screen";
-import AppTextInput from "./app/components/AppTextInput";
-import AppPicker from "./app/components/AppPicker";
-import LoginScreen from "./app/screens/LoginScreen";
+import { StyleSheet } from "react-native";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
 
 export default function App() {
-  const [category, setCategory] = useState();
-
-  return <LoginScreen />;
+  return <ListingEditScreen />;
 }
 
 const styles = StyleSheet.create({
