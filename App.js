@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
-import ListingEditScreen from "./app/screens/ListingEditScreen";
+import LoginScreen from "./app/screens/LoginScreen";
 
 export default function App() {
-  return <ListingEditScreen />;
+  return <LoginScreen/>;
 }
 
 const styles = StyleSheet.create({
